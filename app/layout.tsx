@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.png",
   },
+
+  alternates: {
+    canonical: "https://www.hikvisionhuancayo.com",
+  },
   // --- NUEVA CONFIGURACIÓN PARA COMPARTIR EN REDES (OPEN GRAPH) ---
   openGraph: {
     title: "Hikvision Huancayo | Seguridad y Conectividad",
