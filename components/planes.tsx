@@ -1,7 +1,8 @@
 "use client";
 
+import { motion, Variants } from "framer-motion";
+
 export default function Pricing() {
-  // Hemos eliminado la propiedad "popular" de todos los planes
   const plans = [
     {
       name: "PACK BÁSICO",
@@ -59,34 +60,63 @@ export default function Pricing() {
 
   const phoneNumber = "992221920";
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
+    }
+  };
+
   return (
     <section className="py-24 bg-white border-t border-gray-50" id="planes">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-red-600 font-bold tracking-[0.2em] uppercase text-sm mb-4 block">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <motion.span variants={itemVariants} className="text-red-600 font-bold tracking-[0.2em] uppercase text-sm mb-4 block">
             Nuestros Precios
-          </span>
-          <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl">
+          </motion.span>
+          <motion.h2 variants={itemVariants} className="text-4xl font-extrabold text-slate-900 tracking-tight sm:text-5xl">
             Planes de Monitoreo
-          </h2>
-          <p className="mt-4 text-lg text-gray-500">
+          </motion.h2>
+          <motion.p variants={itemVariants} className="mt-4 text-lg text-gray-500">
             Elige el paquete que mejor se adapte a tus necesidades de seguridad. Todos los planes incluyen instalación profesional.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Cuadrícula de tarjetas sin destacar ninguna en particular */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {plans.map((plan) => {
-            // Mensaje actualizado incluyendo la procedencia de la página web
             const waMessage = encodeURIComponent(
               `Hola Hikvision Huancayo, me gustaría cotizar el ${plan.name} de S/${plan.price}/mes.`
             );
 
             return (
-              <div
+              <motion.div
                 key={plan.name}
-                className="relative flex flex-col p-8 bg-white rounded-3xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-200 hover:-translate-y-2"
+                variants={itemVariants}
+                whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
+                className="relative flex flex-col p-8 bg-white rounded-3xl border border-gray-400 transition-shadow duration-300 hover:shadow-2xl hover:shadow-slate-200"
               >
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-slate-900 tracking-tight">{plan.name}</h3>
@@ -114,19 +144,20 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                {/* Botón uniforme para todos los planes */}
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.95 }}
                   href={`https://wa.me/51${phoneNumber}?text=${waMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl font-bold text-center transition-all duration-300 flex items-center justify-center bg-slate-900 text-white hover:bg-red-600 shadow-lg shadow-slate-200 hover:shadow-red-200 active:scale-95"
+                  className="w-full py-3.5 px-4 rounded-xl font-bold text-center flex items-center justify-center bg-slate-900 text-white hover:bg-red-600 shadow-lg shadow-slate-200 transition-colors"
                 >
                   Cotizar Plan
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

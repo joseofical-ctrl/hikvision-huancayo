@@ -7,7 +7,6 @@ export default function ContactoPage() {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       
-      {/* Hero Minimalista */}
       <section className="pt-48 pb-16 border-b border-gray-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.span 
@@ -34,7 +33,6 @@ export default function ContactoPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             
-            {/* Columna Izquierda: Información de Contacto */}
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -45,7 +43,6 @@ export default function ContactoPage() {
                 <h2 className="text-3xl font-bold mb-8">Información de Contacto</h2>
                 <div className="space-y-8">
                   
-                  {/* Teléfonos (Ahora son enlaces clicables) */}
                   <div className="flex items-start gap-4">
                     <div className="p-4 bg-slate-50 rounded-2xl text-red-600">
                       <Phone size={24} />
@@ -61,7 +58,6 @@ export default function ContactoPage() {
                     </div>
                   </div>
 
-                  {/* Correo (Ahora abre la app de mail) */}
                   <div className="flex items-start gap-4">
                     <div className="p-4 bg-slate-50 rounded-2xl text-red-600">
                       <Mail size={24} />
@@ -77,7 +73,6 @@ export default function ContactoPage() {
                     </div>
                   </div>
 
-                  {/* Oficinas */}
                   <div className="flex items-start gap-4">
                     <div className="p-4 bg-slate-50 rounded-2xl text-red-600">
                       <MapPin size={24} />
@@ -89,7 +84,6 @@ export default function ContactoPage() {
                     </div>
                   </div>
 
-                  {/* Horario */}
                   <div className="flex items-start gap-4">
                     <div className="p-4 bg-slate-50 rounded-2xl text-red-600">
                       <Clock size={24} />
@@ -105,7 +99,6 @@ export default function ContactoPage() {
               </div>
             </motion.div>
 
-            {/* Columna Derecha: Mapa Interactivo */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

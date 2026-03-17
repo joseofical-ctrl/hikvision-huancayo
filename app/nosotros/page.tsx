@@ -19,7 +19,6 @@ export default function NosotrosPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      {/* Hero Minimalista */}
       <section className="pt-48 pb-20 border-b border-gray-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <motion.span 
@@ -81,7 +80,6 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Pilares - Sin fondos, solo líneas finas */}
       <section className="py-24 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
@@ -106,7 +104,6 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Valores Finales - Minimalismo Máximo */}
       <section className="py-24 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-20">
           {valores.map((val, i) => (

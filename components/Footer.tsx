@@ -25,15 +25,15 @@ export default function Footer() {
           
           {/* Columna 1: Branding y Redes */}
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="relative w-12 h-12">
-                <Image src="/logo.png" alt="Logo" fill className="object-contain" />
-              </div>
-              <div>
-                <span className="text-xl font-bold tracking-tighter block leading-none">Hikvision</span>
-                <span className="text-[10px] text-red-500 font-bold uppercase tracking-[0.3em]">Huancayo</span>
-              </div>
+            <div className="relative w-80 h-26">
+              <Image 
+                src="/logo-footer.png" 
+                alt="Hikvision Huancayo Logo" 
+                fill
+                className="object-contain object-left" 
+              />
             </div>
+            
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               Especialistas en seguridad electrónica, conectividad y soluciones tecnológicas en la región Junín.
             </p>
@@ -55,7 +55,7 @@ export default function Footer() {
                   </div>
                   <div className="text-sm">
                     <p className="font-bold text-gray-200 group-hover:text-red-500 transition-colors">Ventas: (064) 600070</p>
-                    <p className="text-gray-400 italic">Clic para llamar</p>
+                    <p className="text-gray-400 italic">Click para llamar</p>
                   </div>
                 </a>
               </li>
@@ -77,7 +77,6 @@ export default function Footer() {
             <div>
               <h4 className="text-sm font-bold uppercase tracking-widest text-red-500 mb-6 italic">Nuestras Sedes</h4>
               <div className="space-y-4 text-sm">
-                {/* Enlace a Google Maps para Huancayo */}
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=Av.+Jose+Olaya+109+Huancayo" 
                   target="_blank" 
@@ -104,9 +103,8 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* SECCIÓN LIBRO DE RECLAMACIONES */}
             <div className="pt-4">
-              <a href="/libro-de-reclamaciones" className="inline-block group">
+              <a href="https://reclamaciones.proyectocastro.com/" target="_blank" className="inline-block group">
                 <div className="relative w-40 h-16 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
                   <Image 
                     src="/libro.png"
@@ -121,13 +119,12 @@ export default function Footer() {
 
         </div>
 
-        {/* Footer Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-gray-500 text-[10px] uppercase tracking-widest">
             © {currentYear} <span className="text-gray-300 font-bold">Grupo Castro</span>.
           </p>
           <div className="flex gap-8 text-[10px] uppercase tracking-widest font-bold text-gray-600">
-            <a href="https://nilhardsoft.com" target="_blank" className="flex items-center gap-1.5 hover:text-white transition-colors group">
+            <a href="https://nilhardsoft.org" target="_blank" className="flex items-center gap-1.5 hover:text-white transition-colors group">
               Powered by <span className="text-gray-400 group-hover:text-red-500 transition-colors">Nilhardsoft</span> <ExternalLink size={10} />
             </a>
           </div>

@@ -5,6 +5,7 @@ import Planes from "@/components/planes";
 import Equipo from "@/components/equipo";
 import Exitos from "@/components/exitos";
 import Footer from "@/components/Footer";
+import Promo from "@/components/promo";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Planes />
       <Equipo />
       <Exitos />
+      <Promo />
       <Footer />
     </main>
   );

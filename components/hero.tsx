@@ -4,7 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import type { Engine } from "@tsparticles/engine";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 
 export default function Hero() {
   const [init, setInit] = useState(false);
@@ -17,8 +17,7 @@ export default function Hero() {
     "Conectividad Satelital Starlink"
   ];
 
-  // Configuración del mensaje de WhatsApp
-  const phoneNumber = "922221920";
+  const phoneNumber = "992221920";
   const message = encodeURIComponent("Hola Hikvision Huancayo, me gustaría cotizar un servicio de seguridad.");
 
   useEffect(() => {
@@ -37,7 +36,7 @@ export default function Hero() {
   }, [phrases.length]);
 
   const particlesOptions = useMemo(() => ({
-    fullScreen: { enable: false }, // Mantiene las partículas solo en el Hero
+    fullScreen: { enable: false },
     background: { color: { value: "#ffffff" } },
     fpsLimit: 60,
     interactivity: {
@@ -60,58 +59,87 @@ export default function Hero() {
     detectRetina: true,
   }), []);
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
     <div className="relative pt-48 pb-32 w-full flex items-center justify-center overflow-hidden bg-white">
       {init && (
-        <div className="absolute inset-0 z-0">
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 2 }} 
+          className="absolute inset-0 z-0"
+        >
           <Particles id="tsparticles" options={particlesOptions} />
-        </div>
+        </motion.div>
       )}
 
-      <div className="relative z-10 text-center px-4 w-full max-w-4xl">
-        <h1 className="text-sm md:text-base text-gray-500 font-bold tracking-[0.2em] uppercase mb-6">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 text-center px-4 w-full max-w-4xl"
+      >
+        <motion.h1 variants={itemVariants} className="text-sm md:text-base text-gray-500 font-bold tracking-[0.2em] uppercase mb-6">
           Hikvision Huancayo
-        </h1>
+        </motion.h1>
         
-        <div className="h-24 md:h-28 flex items-center justify-center">
+        <motion.div variants={itemVariants} className="h-24 md:h-28 flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.h2
               key={index}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
               className="text-5xl md:text-7xl font-extrabold text-[#0f172a] tracking-tight"
             >
               {phrases[index]}
             </motion.h2>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
-        <p className="mt-8 text-lg text-gray-600 max-w-2xl mx-auto">
+        <motion.p variants={itemVariants} className="mt-8 text-lg text-gray-600 max-w-2xl mx-auto">
           Más que un técnico, una solución. Especialistas en videovigilancia, redes y facturación electrónica.
-        </p>
+        </motion.p>
 
-        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center relative z-20">
-          {/* BOTÓN COTIZAR: WhatsApp Directo */}
-          <a 
+        <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row gap-4 justify-center relative z-20">
+          <motion.a 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href={`https://wa.me/51${phoneNumber}?text=${message}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3.5 bg-[#e60012] text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-lg shadow-red-500/30 flex items-center justify-center"
           >
             Cotizar Servicio
-          </a>
+          </motion.a>
 
-          {/* BOTÓN PLANES: Scroll suave a la sección de Pricing */}
-          <a 
+          <motion.a 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             href="#planes"
             className="px-8 py-3.5 bg-white text-gray-800 font-semibold rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors flex items-center justify-center"
           >
             Ver Planes
-          </a>
-        </div>
-      </div>
+          </motion.a>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
